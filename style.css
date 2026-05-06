@@ -1,0 +1,211 @@
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+/* BODY */
+body{
+  background: radial-gradient(circle at top, #141414, #000000);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAVBAR (Glass Effect) */
+.navbar{
+  background: rgba(0,0,0,0.6) !important;
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-brand{
+  color:#e50914 !important;
+  font-weight:bold;
+}
+
+.nav-link{
+  color:#fff !important;
+  opacity:0.8;
+  transition:0.3s;
+}
+
+.nav-link:hover{
+  opacity:1;
+  color:#e50914 !important;
+}
+
+/* HERO SECTION (NO CROP IMAGE) */
+.hero{
+  height:100vh;
+  background:url('./herobackground.jpg') no-repeat center center;
+  background-size:contain;  /* 🔥 FULL IMAGE visible */
+  background-color:black;   /* empty space hide */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  animation: zoomSlow 12s infinite alternate ease-in-out;
+}
+
+/* DARK OVERLAY */
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.95),
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.9)
+  );
+  z-index:1;
+}
+
+/* HERO CONTENT */
+.hero div{
+  position:relative;
+  z-index:2;
+  max-width:600px;
+}
+
+.hero h1{
+  font-size:50px;
+  font-weight:bold;
+  animation: fadeUp 1.5s ease-in-out;
+}
+
+.hero input{
+  margin-top:20px;
+  padding:12px;
+  border-radius:6px;
+  border:none;
+  width:100%;
+}
+
+/* RESTAURANTS SECTION */
+#restaurants h2{
+  color:#fff;
+}
+
+/* CARDS */
+.restaurant-card{
+  background:#181818;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.4s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.6);
+  position:relative;
+}
+
+.restaurant-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.restaurant-card h5{
+  color:#fff;
+}
+
+.restaurant-card p{
+  color:#bbb;
+}
+
+/* CARD HOVER */
+.restaurant-card:hover{
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 20px 40px rgba(229,9,20,0.2);
+}
+
+.restaurant-card:hover img{
+  transform:scale(1.12);
+  filter:brightness(1.2);
+}
+
+/* GLOW EFFECT */
+.restaurant-card::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(45deg,transparent,rgba(229,9,20,0.08),transparent);
+  top:0;
+  left:-100%;
+  transition:0.5s;
+}
+
+.restaurant-card:hover::before{
+  left:100%;
+}
+
+/* BUTTONS */
+.btn-danger{
+  background:#e50914;
+  border:none;
+}
+
+.btn-danger:hover{
+  background:#ff0a16;
+  transform:scale(1.05);
+}
+
+/* LOGIN + CONTACT */
+.card{
+  background:#181818 !important;
+  border:none;
+  color:white;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  color:#aaa;
+  font-size:14px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes zoomSlow{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.05);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .hero{
+    padding:20px;
+    background-size:contain; /* mobile fix */
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+}
+
+section, .restaurant-card{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s ease;
+}
